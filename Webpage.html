@@ -1,0 +1,91 @@
+<html>
+	<head>
+	<style>
+		body{
+			background-color: skyblue;
+		}
+		h1{
+			font-family: Sans Serif;
+			font-style: 
+		}
+		p{
+		font-size: 18;
+		}
+		#new{
+		color: green;
+		font-size: 22;
+		font-weight: bold;
+		}
+		#old{
+		font-size: 18;
+		color: green;
+		}
+	</style>
+    <script>
+		document.addEventListener('DOMContentLoaded', function(){
+		document.querySelector('select').onchange = function(){
+		document.querySelector('h1').style.color = this.value;
+		
+		}
+		})
+		document.addEventListener('DOMContentLoaded', function(){
+		document.querySelector('form').onsubmit = function(){
+		const currfrom = document.querySelector('#currencyfrom').value.toUpperCase()
+		const currto = document.querySelector('#currencyto').value.toUpperCase()
+		const value = document.querySelector('#amount').value
+		let listfrom = {
+			EUR: 1.208,
+			USD: 1,
+			INR: 0.014,
+			CAD: 0.82
+		}
+		let listto = {
+		EUR: 0.827,
+		USD: 1,
+		INR: 73.47,
+		CAD: 1.22
+		}
+		const curr_from_val = listfrom[currfrom]
+		let curr_to_val = listto[currto]
+		let ans = curr_from_val*curr_to_val
+		ans = ans*value
+		ans = ans.toFixed(3)
+		let text = 'The converted amount is: '
+		document.querySelector('#old').innerHTML = text
+		document.querySelector('#new').innerHTML = ans;
+		return false;
+		}
+		})
+    </script>
+		<title>Currency Converter</title>
+	</head>
+	<body>
+	<h1>Welcome to the genius currency converter!</h1><br>
+	<hr>
+	<img src = 'https://tse2.mm.bing.net/th?id=OIP.R_Fob7gCYsQzq9k381VQFQHaEZ&pid=Api&P=0&w=259&h=154' alt = 'Statistics' width = '200' height = '150' style = "float:right;">
+		<br><br>
+		<p>In the field available below, enter the currency from and to which you need to convert.</p>
+		<p>Also, enter the amount that you want to convert.</p>
+		<form>
+			<br><br>
+			<input type = 'text' placeholder='Previous Currency' id = 'currencyfrom'><br><br>
+			<input type = 'text' placeholder = 'New Currency' id = 'currencyto'><br><br>
+			<input type = 'decimal' placeholder = 'Amount' id = 'amount'><br><br>
+			<input type="submit" id = 'submit'>
+			
+		</form><br><br>
+		<div id = 'old'>
+		</div><br><br>
+		<div id = 'new'>
+		</div>
+		
+		<select>
+					<option value = 'red'>Red</option>
+			<option value = 'blue'>Blue</option>
+			<option value = 'green'>Green</option>
+			<option value = 'yellow'>Yellow</option>
+			<option value = 'brown'>Brown</option>
+			<option value = 'purple'>Violet</option>
+		</select>
+	</body>
+</html>
